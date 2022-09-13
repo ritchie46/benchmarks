@@ -1,3 +1,4 @@
+import asyncio
 import contextlib
 import datetime
 import json
@@ -17,7 +18,7 @@ import distributed
 import filelock
 import pytest
 import s3fs
-from distributed import Client
+from distributed import Client, performance_report
 from distributed.diagnostics.memory_sampler import MemorySampler
 from toolz import merge
 
@@ -104,7 +105,7 @@ def get_coiled_software_name():
 dask.config.set(
     {
         "coiled.account": "dask-engineering",
-        "coiled.software": get_coiled_software_name(),
+        # "coiled.software": get_coiled_software_name(),
     }
 )
 
@@ -314,9 +315,24 @@ def small_cluster(request):
         n_workers=10,
         worker_vm_types=["t3.large"],  # 2CPU, 8GiB
         scheduler_vm_types=["t3.large"],
-        backend_options=backend_options,
+        backend_options={"send_cloudwatch_metrics": True, **backend_options},
+        package_sync=True,
+        environ={
+            "DASK_DISTRIBUTED__SCHEDULER__DASHBOARD__TASKS__TASK_STREAM_LENGTH": "1000000"
+        },
     ) as cluster:
         yield cluster
+
+
+@pytest.fixture
+def collect_performance_report(request):
+    @contextlib.contextmanager
+    def _collect_performance_report(name):
+        name = f"{name}-{request.node.name}.html"
+        with performance_report(name):
+            yield
+
+    yield _collect_performance_report
 
 
 @pytest.fixture
@@ -324,14 +340,23 @@ def small_client(
     small_cluster,
     upload_cluster_dump,
     benchmark_all,
+    collect_performance_report,
 ):
     with Client(small_cluster) as client:
         small_cluster.scale(10)
         client.wait_for_workers(10)
         client.restart()
 
-        with upload_cluster_dump(client, small_cluster), benchmark_all(client):
-            yield client
+        def enable_debug():
+            loop = asyncio.get_event_loop()
+            loop.set_debug(True)
+
+        client.run_on_scheduler(enable_debug)
+
+        with upload_cluster_dump(client, small_cluster):
+            with collect_performance_report(small_cluster.name):
+                with benchmark_all(client):
+                    yield client
 
 
 S3_REGION = "us-east-2"
