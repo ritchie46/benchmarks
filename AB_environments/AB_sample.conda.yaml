@@ -1,9 +1,3 @@
-# Sample conda environment file for A/B testing.
-# Delete/rename as needed.
-# All files *must* be called AB_<name>.conda.yaml
-# and *must* be accompanied by AB_<name>.dask.yaml
-
-# See notes in AB_baseline.conda.yaml
 channels:
   - conda-forge
 dependencies:
