@@ -127,11 +127,11 @@ def test_q6(ddf, shuffle):
     )
 
 
-def test_q7(ddf):
+def test_q7(ddf, optional_shuffle):
     ddf = ddf[["id3", "v1", "v2"]]
     (
         ddf.groupby("id3", dropna=False, observed=True)
-        .agg({"v1": "max", "v2": "min"})
+        .agg({"v1": "max", "v2": "min"}, shuffle=optional_shuffle)
         .assign(range_v1_v2=lambda x: x["v1"] - x["v2"])[["range_v1_v2"]]
         .compute()
     )

@@ -615,6 +615,22 @@ P2P_AVAILABLE = Version(distributed.__version__) > Version("2022.12.1")
 
 @pytest.fixture(
     params=[
+        None,
+        "tasks",
+        pytest.param(
+            "p2p",
+            marks=pytest.mark.skipif(
+                not P2P_AVAILABLE, reason="p2p shuffle not available"
+            ),
+        ),
+    ]
+)
+def optional_shuffle(request):
+    return request.param
+
+
+@pytest.fixture(
+    params=[
         "tasks",
         pytest.param(
             "p2p",
