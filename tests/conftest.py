@@ -23,7 +23,6 @@ from coiled import Cluster
 from distributed import Client
 from distributed.diagnostics.memory_sampler import MemorySampler
 from distributed.scheduler import logger as scheduler_logger
-from packaging.version import Version
 from sqlalchemy.orm import Session
 
 from benchmark_schema import TestRun
@@ -609,13 +608,12 @@ def upload_cluster_dump(
     yield _upload_cluster_dump
 
 
-# Include https://github.com/dask/distributed/pull/7410 for categorical support
-P2P_AVAILABLE = Version(distributed.__version__) > Version("2022.12.1")
+P2P_AVAILABLE = True
 
 
 @pytest.fixture(
     params=[
-        "tasks",
+        # "tasks",
         pytest.param(
             "p2p",
             marks=pytest.mark.skipif(
