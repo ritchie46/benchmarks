@@ -15,4 +15,4 @@ dependencies:
     - coiled=0.2.61
     - pip:
       - dask==2023.1.0
-      - git+https://github.com/hendrikmakait/distributed@f1bf7fbb5a86dff38ae70f6b80794a89d12978a4
+      - git+https://github.com/hendrikmakait/distributed@4e81316e8caa3ed60d034c3cc4c45f1404c55afb
