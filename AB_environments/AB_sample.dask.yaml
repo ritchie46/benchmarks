@@ -11,3 +11,5 @@
 # distributed:
 #   scheduler:
 #     worker-saturation: 1.2
+
+shuffle: "p2p"
