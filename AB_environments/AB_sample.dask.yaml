@@ -13,3 +13,6 @@
 #     worker-saturation: 1.2
 
 shuffle: "p2p"
+optimization:
+  fuse:
+    active: false
