@@ -14,4 +14,4 @@ dependencies:
     - coiled-runtime=0.2.1
     - pip:
       - git+https://github.com/hendrikmakait/dask@9c3395971e708ef79563c68c406048b6ee037c3f
-      - git+https://github.com/hendrikmakait/distributed@713d866a8ac4c71f11cd705e5ed80b53c1fb50aa
+      - git+https://github.com/hendrikmakait/distributed@1ebaeae420c07d9ca0a1a36a25b69851e36fb305
