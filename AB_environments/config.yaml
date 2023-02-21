@@ -19,7 +19,7 @@ targets:
   # - tests/benchmarks/test_array.py::test_basic_sum
 
 # Enable specific H2O datasets
-h2o_datasets:
+# h2o_datasets:
   # - 0.5 GB (csv)
   # - 5 GB (csv)
   # - 50 GB (csv)
