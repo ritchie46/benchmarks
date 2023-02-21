@@ -11,7 +11,8 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks
+  - tests/stability/test_array.py::test_rechunk_in_memory
+  - tests/stability/test_array.py::test_rechunk_out_of_memory
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
@@ -25,7 +26,7 @@ h2o_datasets:
   # - 0.5 GB (parquet)
   # - 5 GB (parquet)
   # - 50 GB (parquet)
-  - 5 GB (parquet+pyarrow)
+  # - 5 GB (parquet+pyarrow)
   # - 50 GB (parquet+pyarrow)
   # - 500 GB (parquet+pyarrow)
 

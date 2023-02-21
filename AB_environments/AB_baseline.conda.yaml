@@ -16,6 +16,5 @@ dependencies:
       # - You can point to your own git fork instead
       # For example, if you want to test a PR before it's merged into main, you should
       # change this to the dask/dask and/or dask/distributed git tip
-      - dask==2022.12.0
-      - distributed==2022.12.0
-      # - git+https://github.com/dask/distributed@803c624fcef99e3b6f3f1c5bce61a2fb4c9a1717
+      - git+https://github.com/dask/dask@bbaac1350b3f86fe1efece9d3a7461cc8ad1a245
+      - git+https://github.com/dask/distributed@242079dea47ce2e2faf29e006d7cc39db8eb90d5
