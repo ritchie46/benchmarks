@@ -3,4 +3,4 @@
 # Change contents, but do not rename.
 # Leave empty if you don't want to override anything.
 
-shuffle: "tasks"
+rechunk: "tasks"

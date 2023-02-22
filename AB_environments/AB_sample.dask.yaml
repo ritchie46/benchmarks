@@ -12,7 +12,7 @@
 #   scheduler:
 #     worker-saturation: 1.2
 
-shuffle: "p2p"
+rechunk: "p2p"
 optimization:
   fuse:
     active: false
