@@ -12,7 +12,9 @@ test_null_hypothesis: true
 # Test directories, test files, or individual tests to run.
 targets:
   - tests/stability/test_array.py::test_rechunk_in_memory
-  - tests/stability/test_array.py::test_rechunk_out_of_memory
+  - tests/stability/test_array.py::test_rechunk_out_of_memory_small
+  - tests/stability/test_array.py::test_rechunk_out_of_memory_half
+  - tests/stability/test_array.py::test_rechunk_out_of_memory_full
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py

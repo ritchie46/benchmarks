@@ -9,13 +9,25 @@ from ..utils_test import cluster_memory, scaled_array_shape, wait
 @pytest.mark.stability
 def test_rechunk_in_memory(small_client):
     x = da.random.random((50000, 50000))
-    x.rechunk((50000, 20)).rechunk((20, 50000)).sum().compute()
+    x.rechunk((50000, 200)).rechunk((200, 50000)).sum().compute()
 
 
 # @pytest.mark.skip(reason="this runs forever")
-def test_rechunk_out_of_memory(small_client):
+
+
+def test_rechunk_out_of_memory_small(small_client):
     x = da.random.random((100000, 100000))
     x.rechunk((50000, 20)).rechunk((20, 50000)).sum().compute()
+
+
+def test_rechunk_out_of_memory_half(small_client):
+    x = da.random.random((100000, 100000))
+    x.rechunk((50000, 200)).rechunk((200, 50000)).sum().compute()
+
+
+def test_rechunk_out_of_memory_full(small_client):
+    x = da.random.random((100000, 100000))
+    x.rechunk((100000, 100)).rechunk((100, 100000)).sum().compute()
 
 
 @pytest.mark.stability
