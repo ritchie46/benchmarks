@@ -18,4 +18,3 @@ dependencies:
       # change this to the dask/dask and/or dask/distributed git tip
       - git+https://github.com/dask/dask@c9a9edef0c7e996ef72cb474bf030778189fd737
       - git+https://github.com/dask/distributed@main
-      # - git+https://github.com/dask/distributed@803c624fcef99e3b6f3f1c5bce61a2fb4c9a1717

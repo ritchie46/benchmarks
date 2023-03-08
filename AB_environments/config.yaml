@@ -11,7 +11,7 @@ test_null_hypothesis: false
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks/test_join.py
+  - tests/benchmarks/test_join.py::test_join_big
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
