@@ -2,7 +2,7 @@
 # Lower values are faster and cheaper but will result in higher variance.
 # This must remain set to 0 in the main branch, thus completely disabling
 # A/B tests, in order to avoid unnecessary runs.
-repeat: 0
+repeat: 5
 
 # Set to true to automatically create a verbatim copy of AB_baseline and then compare
 # the two in the A/B tests. Set to false to save some money if you are already confident
@@ -11,11 +11,16 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks
-  # - tests/runtime
-  # - tests/stability
-  # - tests/benchmarks/test_futures.py
-  # - tests/benchmarks/test_array.py::test_basic_sum
+  - tests/benchmarks/test_h2o.py::test_q6
+  - tests/benchmarks/test_h2o.py::test_q8
+  - tests/benchmarks/test_h2o.py::test_q9
+  - tests/benchmarks/test_dataframe.py::test_shuffle
+  - tests/benchmarks/test_join.py::test_join_big
+  - tests/benchmarks/test_join.py::test_join_big_small
+  - tests/benchmarks/test_join.py::test_set_index
+  - tests/benchmarks/test_array.py::test_rechunk_in_memory
+  - tests/benchmarks/test_array.py::test_rechunk_striping
+  - tests/benchmarks/test_array.py::test_rechunk_swap_axes
 
 # Enable specific H2O datasets
 h2o_datasets:
