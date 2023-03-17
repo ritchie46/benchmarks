@@ -24,7 +24,6 @@ from coiled import Cluster
 from distributed import Client, WorkerPlugin
 from distributed.diagnostics.memory_sampler import MemorySampler
 from distributed.scheduler import logger as scheduler_logger
-from packaging.version import Version
 from sqlalchemy.orm import Session
 
 from benchmark_schema import TestRun
@@ -610,7 +609,7 @@ def upload_cluster_dump(
 
 
 # Include https://github.com/dask/distributed/pull/7410 for categorical support
-P2P_SHUFFLE_AVAILABLE = Version(distributed.__version__) >= Version("2023.1.0")
+P2P_SHUFFLE_AVAILABLE = True  # Version(distributed.__version__) >= Version("2023.1.0")
 
 
 @pytest.fixture(
@@ -635,7 +634,7 @@ def configure_shuffling(shuffle_method):
 
 
 # Include https://github.com/dask/distributed/pull/7534
-P2P_RECHUNK_AVAILABLE = Version(distributed.__version__) >= Version("2023.2.1")
+P2P_RECHUNK_AVAILABLE = True  # Version(distributed.__version__) >= Version("2023.2.1")
 
 
 @pytest.fixture(
