@@ -16,8 +16,8 @@ dependencies:
     - coiled >=0.2.54
     - numpy ==1.23.5
     - pandas ==1.5.3  # 2.0.0 requires a newer version of xarray
-    - dask ==2023.4.0
-    - distributed ==2023.4.0
+    # - dask ==2023.4.0
+    # - distributed ==2023.4.0
     - fsspec ==2023.3.0
     - s3fs ==2023.3.0
     - gcsfs ==2023.3.0
@@ -54,5 +54,5 @@ dependencies:
       # conda. You may alternatively point to your own git fork (but make sure you
       # sync'ed tags!)
       # Read README.md for troubleshooting.
-      - git+https://github.com/dask/dask@b85bf5be72b02342222c8a0452596539fce19bce
-      - git+https://github.com/dask/distributed@6dc4c24b7a01b93952bbfd95d3ecba043580c245
+      - git+https://github.com/dask/dask@cc13a7b36960ae02fe17883edcdff990d13f060b
+      - git+https://github.com/hendrikmakait/distributed@bf27d6469d328c32b907fe1c401fc5e4ca06a93c
