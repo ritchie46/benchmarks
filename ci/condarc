@@ -1,4 +1,6 @@
 auto_activate_base: false
+channels:
+  - conda-forge
 remote_backoff_factor: 20
 remote_connect_timeout_secs: 20.0
 remote_max_retries: 10

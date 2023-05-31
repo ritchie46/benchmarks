@@ -1,0 +1,34 @@
+# Sample baseline, a.k.a. 'A', config file for A/B testing
+# Change contents as needed. DO NOT delete/rename.
+# You should create your variant, a.k.a. 'B' files, as copies of this file.
+# All 'B' environment config files *must* be named AB_environments/AB_<name>.yaml
+
+python-version: 3.9
+
+# Execute bash commands
+run:
+  # Use the same environment as in the nightly tests as a starting point. If you want an
+  # environment with less packages, or if upgrading packages after they've been
+  # installed causes issues, you should create a copy of ci/environment.yml somewhere
+  # and change this line to reference it instead.
+  - mamba env update -f ci/environment.yml
+
+  # Upgrade dask, distributed, and zict to git tip. Delete if undesired.
+  - mamba env update -f ci/environment-git-tip.yml
+
+  # Add here your custom 'mamba install', 'pip install', or 'mamba env update' commands
+  # - ...
+
+# Override ../cluster_kwargs.yaml.
+# Leave blank if you don't want to override anything.
+cluster:
+  # small_cluster:
+  #   n_workers: 5
+  #   worker_vm_types: [m6i.xlarge]
+
+# Define dask config options (overriding the built-in config) for this environment.
+# Leave blank if you don't want to override anything.
+dask-config:
+  # distributed:
+  #   scheduler:
+  #     worker-saturation: .inf

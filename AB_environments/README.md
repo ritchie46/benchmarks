@@ -5,12 +5,26 @@ highlighting performance differences between different released versions
 of dask, distributed, or any of the dependencies and/or between different
 dask configs.
 
+## TL;DR; version
+1. Branch from `main` to `<your name>/AB_<something>`. Don't use a forked repository.
+2. In `AB_environments/config.yaml`, set `repeat: 5`
+3. Copy `AB_environments/AB_baseline.yaml` to `AB_environments/AB_<something>.yaml`.
+   Modify the copy to define what differs from baseline.  
+   You can make as many copies as you wish.
+4. git push. Don't open a PR.
+5. Open the [GitHub Actions tab] 
+  (https://github.com/coiled/benchmarks/actions/workflows/ab_tests.yml)
+  and wait for the run to complete.
+6. Download and decompress `static-dashboard.zip` and open `index.html` in your browser.
+
+## The long version
+
 To run an A/B test:
 
 ### 1. Create a new branch
 
 Branch from main, on the coiled repo itself. Preferably, call the branch
-something meaningful, e.g. `AB/jobstealing`.
+something meaningful, e.g. `yourname/AB_jobstealing`.
 You *must* create the branch on the Coiled repo (`coiled/benchmarks`); CI
 workflows will not work on a fork (`yourname/benchmarks`).
 
@@ -182,7 +196,7 @@ max_parallel:
 
 ### 6. Run CI
 - `git push`. Note: you should *not* open a Pull Request. 
-- Open [the GitHub Actions tab] 
+- Open the [GitHub Actions tab] 
   (https://github.com/coiled/benchmarks/actions/workflows/ab_tests.yml)
   and wait for the run to complete.
 - Open the run from the link above. In the Summary tab, scroll down and download the
