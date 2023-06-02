@@ -12,8 +12,10 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks
-  - tests/workflows
+  - tests/benchmarks/test_h2o.py
+  - tests/benchmarks/test_dataframe.py
+  - tests/benchmarks/test_join.py
+  - tests/workflows/test_uber_lyft.py
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
@@ -25,10 +27,10 @@ h2o_datasets:
   # - 5 GB (csv)
   # - 50 GB (csv)
   # - 0.5 GB (parquet)
-  # - 5 GB (parquet)
-  # - 50 GB (parquet)
+  - 5 GB (parquet)
+  - 50 GB (parquet)
   - 5 GB (parquet+pyarrow)
-  # - 50 GB (parquet+pyarrow)
+  - 50 GB (parquet+pyarrow)
   # - 500 GB (parquet+pyarrow)
 
 # AWS implements limiters to how many EC2 instances you can spawn in parallel on the
