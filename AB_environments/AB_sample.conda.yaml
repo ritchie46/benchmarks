@@ -59,8 +59,8 @@ dependencies:
       # conda. You may alternatively point to your own git fork (but make sure you
       # sync'ed tags!)
       # Read README.md for troubleshooting.
-      - git+https://github.com/dask/dask@ae39b43bdc1d7cf1b9ece112ba3dc398f3fabc13
-      - git+https://github.com/dask/distributed@e887fde05a636864f94e7880fd301923406a3db7
+      - git+https://github.com/dask/dask@e56ef0d97943695382b6b554c7207eabbab0d094
+      - git+https://github.com/dask/distributed@7a90f3ed0ecae96c0f0e55a80a8a8e979dd513dc
 
       # FIXME https://github.com/optuna/optuna/pull/4589
       #       Need optuna >3.1.1 (not yet released)
