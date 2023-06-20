@@ -296,7 +296,7 @@ import pandas as pd
 )
 def test_median(small_client, configure_rechunking, duration):
     data = xr.DataArray(
-        data=da.random.random((duration, 3, 10980, 10980), chunks=(1, 1, 4096, 4096))
+        data=da.random.random((duration, 3, 10980, 10980), chunks=(1, 1, 4096, 4096)),
         dims=["time", "band", "x", "y"], 
         coords={"time": pd.date_range("2020-01-01", periods=duration)}
     )
