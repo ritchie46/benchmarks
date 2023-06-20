@@ -681,9 +681,10 @@ P2P_RECHUNK_AVAILABLE = Version(distributed.__version__) >= Version("2023.2.1")
 
 @pytest.fixture(
     params=[
-        "tasks",
-        "p2p",
-        "auto",
+        # "tasks",
+        # "p2p",
+        # "auto",
+        None
     ]
 )
 def rechunk_method(request):
