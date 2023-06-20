@@ -252,8 +252,64 @@ def test_rechunk_swap_axes(small_client, configure_rechunking):
 
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
-@pytest.mark.skip(reason="this runs forever")
+# @pytest.mark.skip(reason="this runs forever")
 def test_rechunk_out_of_memory(small_client, configure_rechunking):
     rng = da.random.default_rng()
     x = rng.random((100000, 100000))
     x.rechunk((50000, 20)).rechunk((20, 50000)).sum().compute()
+
+
+import xarray as xr
+
+def create_dask_data(t_length):
+    return xr.Dataset(
+        dict(
+            anom_u=(["time", "face", "j", "i"], da.random.random((t_length, 1, 987, 1920), chunks=(10, 1, -1, -1))),
+            anom_v=(["time", "face", "j", "i"], da.random.random((t_length, 1, 987, 1920), chunks=(10, 1, -1, -1))),
+        )
+    )
+
+@pytest.mark.parametrize("size", [
+        pytest.param(50, id="1.5 GB"), 
+        pytest.param(500, id="15 GB"), 
+        pytest.param(5000, id="150 GB"),
+    ]
+)
+
+def quadratic_means(ds):
+    quadratic_products = ds**2
+    quadratic_products["uv"] = ds.anom_u * ds.anom_v
+    mean = quadratic_products.mean("time")
+    return mean
+
+def test_quadratic_means(small_client, configure_rechunking, size):
+    quadratic_means(create_dask_data(size)).compute()
+
+import pandas as pd
+
+@pytest.mark.parametrize(
+    "duration", [
+        pytest.param(7, id="week"), 
+        pytest.param(30, id="month"),
+        pytest.param(365, id="year"),
+    ]
+)
+def test_median(small_client, configure_rechunking, duration):
+    data = xr.DataArray(
+        data=da.random.random((duration, 3, 10980, 10980), chunks=(1, 1, 4096, 4096))
+        dims=["time", "band", "x", "y"], 
+        coords={"time": pd.date_range("2020-01-01", periods=duration)}
+    )
+    data.median(dim="time").compute()
+
+
+def test_rechunk_more_local(small_client, configure_rechunking):
+    rng = da.random.default_rng()
+    x = rng.random((100_000, 100_000), chunks=(1000, 10_000))
+    x.rechunk((10_000, 1000)).sum().compute()  # ~76 MiB chunks
+
+
+def test_rechunk_local(small_client, configure_rechunking):
+    rng = da.random.default_rng()
+    x = rng.random((100000, 100_000), chunks=(16384, 8192))
+    x.rechunk((8192, 16384)).sum().compute()
