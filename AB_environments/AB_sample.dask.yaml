@@ -11,6 +11,6 @@
 # distributed:
 #   scheduler:
 #     worker-saturation: 1.2
-array:
-  rechunk:
-    method: "p2p"
+# array:
+#   rechunk:
+#     method: "p2p"
