@@ -311,5 +311,5 @@ def test_rechunk_more_local(small_client, configure_rechunking):
 
 def test_rechunk_local(small_client, configure_rechunking):
     rng = da.random.default_rng()
-    x = rng.random((100000, 100_000), chunks=(16384, 8192))
-    x.rechunk((8192, 16384)).sum().compute()
+    x = rng.random((100000, 100_000), chunks=(4096, 2048))
+    x.rechunk((2048, 4092)).sum().compute()
