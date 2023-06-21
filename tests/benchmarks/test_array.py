@@ -269,12 +269,6 @@ def create_dask_data(t_length):
         )
     )
 
-@pytest.mark.parametrize("size", [
-        pytest.param(50, id="1.5 GB"), 
-        pytest.param(500, id="15 GB"), 
-        pytest.param(5000, id="150 GB"),
-    ]
-)
 
 def quadratic_means(ds):
     quadratic_products = ds**2
@@ -282,6 +276,12 @@ def quadratic_means(ds):
     mean = quadratic_products.mean("time")
     return mean
 
+@pytest.mark.parametrize("size", [
+        pytest.param(50, id="1.5 GB"), 
+        pytest.param(500, id="15 GB"), 
+        pytest.param(5000, id="150 GB"),
+    ]
+)
 def test_quadratic_means(small_client, configure_rechunking, size):
     quadratic_means(create_dask_data(size)).compute()
 
