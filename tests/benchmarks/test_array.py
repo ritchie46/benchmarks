@@ -291,7 +291,7 @@ import pandas as pd
     "duration", [
         pytest.param(7, id="week"), 
         pytest.param(30, id="month"),
-        pytest.param(365, id="year"),
+        pytest.param(138, id="original"),
     ]
 )
 def test_median(small_client, configure_rechunking, duration):
