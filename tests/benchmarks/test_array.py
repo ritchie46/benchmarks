@@ -245,15 +245,16 @@ def test_rechunk_striping(small_client, configure_rechunking):
 
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
-def test_rechunk_swap_axes(small_client, configure_rechunking):
+@pytest.mark.parametrize("factor", [1, 2, 4, 8])
+def test_rechunk_swap_axes(small_client, configure_rechunking, factor):
     rng = da.random.default_rng()
-    x = rng.random((100_000, 100_000), chunks=(100_000, 100))
-    x.rechunk((100, 100_000)).sum().compute()  # ~76 MiB chunks
+    x = rng.random((100_000, 100_000), chunks=(100_000 / factor, 100 * factor))
+    x.rechunk((100 * factor, 100_000 / factor)).sum().compute()  # ~76 MiB chunks
 
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
 @pytest.mark.skip(reason="this runs forever")
-def test_rechunk_out_of_memory(small_client, configure_rechunking):
+def test_rechunk_out_of_memory(small_client):
     rng = da.random.default_rng()
     x = rng.random((100000, 100000))
     x.rechunk((50000, 20)).rechunk((20, 50000)).sum().compute()
