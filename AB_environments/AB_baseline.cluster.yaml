@@ -4,6 +4,3 @@
 
 # Overrides ../cluster_kwargs.yaml.
 # Leave empty if you don't want to override anything.
-array:
-  rechunk:
-    method: "tasks"
