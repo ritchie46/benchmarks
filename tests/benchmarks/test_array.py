@@ -246,7 +246,7 @@ def test_rechunk_striping(small_client, configure_rechunking):
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
 @pytest.mark.parametrize("factor", [0.25, 0.5, 1, 2, 4])
-def test_rechunk_swap_axes(small_client, configure_rechunking, factor):
+def test_rechunk_swap_axes(small_client, factor):
     rng = da.random.default_rng()
     x = rng.random((100_000 * factor, 100_000 * factor), chunks=(100_000 / factor, 100 * factor))
     x.rechunk((100 * factor, 100_000 / factor)).sum().compute()  # ~76 MiB chunks
