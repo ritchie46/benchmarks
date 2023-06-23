@@ -151,7 +151,7 @@ def test_download_throughput(parquet_client, kind):
         fut = dd.read_parquet(path, engine="pyarrow")
     elif kind == "(cooldown)":
         import time
-        time.sleep(300)
+        time.sleep(600)
         pytest.skip("just a sleep")
 
     wait(fut, parquet_client, timeout=60)
