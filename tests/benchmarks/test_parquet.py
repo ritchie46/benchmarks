@@ -95,7 +95,19 @@ def test_write_wide_data(parquet_client, s3_url):
 
 
 @run_up_to_nthreads("parquet_cluster", 60, reason="fixed dataset")
-@pytest.mark.parametrize("kind", ["boto3", "s3fs", "pandas", "pandas+boto3", "dask"])
+@pytest.mark.parametrize(
+    "kind",
+    [
+        "(warmup1)",  # Read note below
+        "(warmup2)",
+        "(warmup3)",
+        "boto3",
+        "s3fs",  # This is used by pandas and dask
+        "pandas",
+        "pandas+boto3",
+        "dask",
+    ],
+)
 def test_download_throughput(parquet_client, kind):
     """Test throughput for downloading and parsing a single 563 MB parquet file.
 
@@ -117,29 +129,23 @@ def test_download_throughput(parquet_client, kind):
         response = s3.get_object(Bucket=bucket_name, Key=key)
         return response["Body"].read()
 
-    if kind == "boto3":
+    def s3fs_load(path):
+        with fsspec.open(path) as f:
+            return f.read()
+
+    def pandas_boto3_load(path):
+        raw = boto3_load(path)
+        buf = io.BytesIO(raw)
+        return pandas.read_parquet(buf, engine="pyarrow")
+
+    if kind == "boto3" or "warmup" in kind:
         fut = parquet_client.submit(boto3_load, path)
-
     elif kind == "s3fs":
-
-        def load(path):
-            with fsspec.open(path) as f:
-                return f.read()
-
-        fut = parquet_client.submit(load, path)
-
+        fut = parquet_client.submit(s3fs_load, path)
     elif kind == "pandas":
         fut = parquet_client.submit(pandas.read_parquet, path, engine="pyarrow")
-
     elif kind == "pandas+boto3":
-
-        def load(path):
-            raw = boto3_load(path)
-            buf = io.BytesIO(raw)
-            return pandas.read_parquet(buf, engine="pyarrow")
-
-        fut = parquet_client.submit(load, path)
-
+        fut = parquet_client.submit(pandas_boto3_load, path)
     elif kind == "dask":
         fut = dd.read_parquet(path, engine="pyarrow")
 
