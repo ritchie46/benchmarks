@@ -106,7 +106,6 @@ def test_write_wide_data(parquet_client, s3_url):
         "pandas",
         "pandas+boto3",
         "dask",
-        "(cooldown)",
     ],
 )
 def test_download_throughput(parquet_client, kind):
@@ -149,9 +148,10 @@ def test_download_throughput(parquet_client, kind):
         fut = parquet_client.submit(pandas_boto3_load, path)
     elif kind == "dask":
         fut = dd.read_parquet(path, engine="pyarrow")
-    elif kind == "(cooldown)":
-        import time
-        time.sleep(600)
-        pytest.skip("just a sleep")
 
     wait(fut, parquet_client, timeout=60)
+
+
+def test_zzz_cooldown():
+    import time
+    time.sleep(600)

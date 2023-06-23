@@ -17,6 +17,7 @@ targets:
   # - tests/stability
   # - tests/benchmarks/test_futures.py
   - tests/benchmarks/test_parquet.py::test_download_throughput
+  - tests/benchmarks/test_parquet.py::test_zzz_cooldown
 
 # Enable specific H2O datasets
 h2o_datasets:
