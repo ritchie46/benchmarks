@@ -15,7 +15,7 @@ dependencies:
     - pip
     - coiled >=0.2.54
     - numpy ==1.23.5
-    - pandas ==2.0.1
+    - pandas ==2.0.2
     - dask ==2023.5.1
     - distributed ==2023.5.1
     - dask-labextension ==6.1.0
@@ -41,7 +41,7 @@ dependencies:
     - toolz ==0.12.0
     - zict ==3.0.0
     - xgboost ==1.7.4
-    - optuna ==3.1.1  # FIXME Actually need >3.1.1; see git override below
+    - optuna ==3.2.0
     - scipy ==1.10.1
     - snowflake-connector-python ==3.0.4
     - snowflake-sqlalchemy ==1.4.7
@@ -59,9 +59,5 @@ dependencies:
       # conda. You may alternatively point to your own git fork (but make sure you
       # sync'ed tags!)
       # Read README.md for troubleshooting.
-      - git+https://github.com/dask/dask@3edd87f6f582979264dee4f2f0cda52b39b23e78
-      - git+https://github.com/hendrikmakait/distributed@4c3488ca249cb50f74db6bfd61d6995fa7a5977b
-
-      # FIXME https://github.com/optuna/optuna/pull/4589
-      #       Need optuna >3.1.1 (not yet released)
-      - git+https://github.com/optuna/optuna.git@378508ab6bddbad182bdfa0e8b3ad4bbb7040f00
+      - git+https://github.com/dask/dask@ae39b43bdc1d7cf1b9ece112ba3dc398f3fabc13
+      - git+https://github.com/dask/distributed@e887fde05a636864f94e7880fd301923406a3db7
