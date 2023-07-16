@@ -12,11 +12,11 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks/test_array.py::test_rechunk_in_memory
-  - tests/benchmarks/test_array.py::test_rechunk_striping
-  - tests/benchmarks/test_array.py::test_rechunk_swap_axes
+  # - tests/benchmarks/test_array.py::test_rechunk_in_memory
+  # - tests/benchmarks/test_array.py::test_rechunk_striping
+  # - tests/benchmarks/test_array.py::test_rechunk_swap_axes
   - tests/benchmarks/test_array.py::test_rechunk_out_of_memory
-  - tests/benchmarks/test_array.py::test_rechunk_out_of_memory_large
+  # - tests/benchmarks/test_array.py::test_rechunk_out_of_memory_large
 
   # - tests/runtime
   # - tests/stability
