@@ -276,7 +276,7 @@ def test_rechunk_swap_axes(small_client, configure_rechunking):
     x.rechunk((100, 100_000)).sum().compute()  # ~76 MiB chunks
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
-@pytest.mark.skip(reason="this runs forever")
+# @pytest.mark.skip(reason="this runs forever")
 def test_rechunk_out_of_memory(small_client, configure_rechunking):
     rng = da.random.default_rng()
     x = rng.random((100000, 100000))
