@@ -12,7 +12,16 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks
+  - tests/benchmarks/test_array.py::test_rechunk_in_memory
+  - tests/benchmarks/test_array.py::test_rechunk_striping
+  - tests/benchmarks/test_array.py::test_rechunk_swap_axes
+  - tests/benchmarks/test_h2o.py::test_q6
+  - tests/benchmarks/test_h2o.py::test_q8
+  - tests/benchmarks/test_h2o.py::test_q9
+  - tests/benchmarks/test_join.py::test_join_big
+  - tests/benchmarks/test_join.py::test_set_index
+  - tests/benchmarks/test_join.py::test_set_index_on_uber_lyft
+  - tests/benchmarks/test_shuffle.py::test_shuffle
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
