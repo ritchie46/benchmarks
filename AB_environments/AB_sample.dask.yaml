@@ -11,3 +11,8 @@
 # distributed:
 #   scheduler:
 #     worker-saturation: 1.2
+
+distributed:
+  shuffle:
+    p2p:
+      stage_in_memory: True
