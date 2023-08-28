@@ -21,7 +21,7 @@ targets:
   - tests/benchmarks/test_join.py::test_join_big
   - tests/benchmarks/test_join.py::test_set_index
   - tests/benchmarks/test_join.py::test_set_index_on_uber_lyft
-  - tests/benchmarks/test_shuffle.py::test_shuffle
+  - tests/benchmarks/test_dataframe.py::test_shuffle
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
