@@ -265,15 +265,15 @@ def test_rechunk_in_memory(small_client, configure_rechunking):
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
 def test_rechunk_striping(small_client, configure_rechunking):
     rng = da.random.default_rng()
-    x = rng.random((100_000, 100_000))
-    x.rechunk((100_000, 100)).rechunk((100, 100_000)).sum().compute()  # ~76 MiB chunks
+    x = rng.random((50000, 50000))
+    x.rechunk((50000, 200)).rechunk((200, 50000)).sum().compute()  # ~76 MiB chunks
 
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
 def test_rechunk_swap_axes(small_client, configure_rechunking):
     rng = da.random.default_rng()
-    x = rng.random((100_000, 100_000), chunks=(100_000, 100))
-    x.rechunk((100, 100_000)).sum().compute()  # ~76 MiB chunks
+    x = rng.random((50000, 50000), chunks=(50000, 200))
+    x.rechunk((200, 50000)).sum().compute()  # ~76 MiB chunks
 
 
 @run_up_to_nthreads("small_cluster", 50, reason="fixed dataset")
