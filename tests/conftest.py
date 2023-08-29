@@ -762,6 +762,6 @@ def new_array(request):
     return _
 
 
-@pytest.fixture(params=[0.1, 0.33])
+@pytest.fixture(params=[0.1, 0.25])
 def memory_multiplier(request):
     return request.param
