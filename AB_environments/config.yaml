@@ -12,9 +12,9 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks/test_h2o.py:test_q6
-  - tests/benchmarks/test_h2o.py:test_q8
-  - tests/benchmarks/test_h2o.py:test_q9
+  - tests/benchmarks/test_h2o.py::test_q6
+  - tests/benchmarks/test_h2o.py::test_q8
+  - tests/benchmarks/test_h2o.py::test_q9
   - tests/benchmarks/test_dataframe.py::test_shuffle
   - tests/benchmarks/test_join.py::test_join_big
   - tests/benchmarks/test_join.py::test_set_index
