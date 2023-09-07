@@ -42,7 +42,7 @@ def test_dataframe_align(small_client):
     wait(final, small_client, 10 * 60)
 
 
-@pytest.parametrize("aggregate", [True, False])
+@pytest.mark.parametrize("aggregate", [True, False])
 def test_shuffle(small_client, configure_shuffling, memory_multiplier, aggregate):
     memory = cluster_memory(small_client)  # 76.66 GiB
 
