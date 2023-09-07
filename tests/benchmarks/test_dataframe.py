@@ -1,6 +1,6 @@
 from dask.sizeof import sizeof
 from dask.utils import format_bytes
-
+import pytest
 from ..utils_test import cluster_memory, timeseries_of_size, wait
 
 
