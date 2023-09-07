@@ -19,7 +19,7 @@ dependencies:
     - fsspec ==2023.5.0
     - s3fs ==2023.5.0
     - gcsfs ==2023.5.0
-    - pyarrow ==11.0.0
+    - pyarrow ==12.0.0
     - jupyterlab ==3.6.2
     - lz4 ==4.3.2
     - ipywidgets ==8.0.4  # FIXME https://github.com/dask/distributed/issues/7688
@@ -54,5 +54,5 @@ dependencies:
       # conda. You may alternatively point to your own git fork (but make sure you
       # sync'ed tags!)
       # Read README.md for troubleshooting.
-      # - git+https://github.com/dask/dask@ae39b43bdc1d7cf1b9ece112ba3dc398f3fabc13
-      # - git+https://github.com/dask/distributed@e887fde05a636864f94e7880fd301923406a3db7
+      - git+https://github.com/dask/dask@3316c38f0bd58ad7633247cf36a01c30f068dfcd
+      - git+https://github.com/dask/distributed@934a804dc2d71a0a0c1f61a804f8e46b865cd818
