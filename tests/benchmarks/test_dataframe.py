@@ -42,7 +42,8 @@ def test_dataframe_align(small_client):
     wait(final, small_client, 10 * 60)
 
 
-def test_shuffle(small_client, configure_shuffling, memory_multiplier):
+@pytest.parametrize("aggregate", [True, False])
+def test_shuffle(small_client, configure_shuffling, memory_multiplier, aggregate):
     memory = cluster_memory(small_client)  # 76.66 GiB
 
     df = timeseries_of_size(
@@ -55,8 +56,9 @@ def test_shuffle(small_client, configure_shuffling, memory_multiplier):
     print_dataframe_info(df)
     # ~25,488,000 rows x 100 columns, 19.18 GiB total, 354 55.48 MiB partitions
 
-    shuf = df.shuffle("0").map_partitions(lambda x: x)
-    result = shuf.size
+    result = df.shuffle("0").map_partitions(lambda x: x)
+    if aggregate:
+        result = result.size
     wait(result, small_client, 20 * 60)
 
 
