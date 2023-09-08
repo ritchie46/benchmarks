@@ -60,4 +60,4 @@ dependencies:
       # sync'ed tags!)
       # Read README.md for troubleshooting.
       - git+https://github.com/hendrikmakait/dask@f07b4a2357fc0ee902cb604bf2414aca0b554a2e
-      - git+https://github.com/hendrikmakait/distributed@e2368b55171cc737016bb7f8e441946211be42a5
+      - git+https://github.com/hendrikmakait/distributed@629124a5f71eb75f19abe1bb172cb7cee80e47df
