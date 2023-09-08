@@ -53,7 +53,7 @@ def test_join_big_small(small_client, memory_multiplier, configure_shuffling):
     wait(result, small_client, 20 * 60)
 
 
-@pytest.mark.parametrize("persist", [True, False])
+@pytest.mark.parametrize("persist", [True])#, False])
 def test_set_index(small_client, persist, memory_multiplier, configure_shuffling):
     memory = cluster_memory(small_client)  # 76.66 GiB
 

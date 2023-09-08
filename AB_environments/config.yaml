@@ -12,18 +12,18 @@ test_null_hypothesis: true
 
 # Test directories, test files, or individual tests to run.
 targets:
-  - tests/benchmarks/test_dataframe.py::test_shuffle
-  - tests/benchmarks/test_h2o.py::test_q6
-  - tests/benchmarks/test_h2o.py::test_q8
-  - tests/benchmarks/test_h2o.py::test_q9
-  - tests/benchmarks/test_join.py::test_join_big
-  - tests/benchmarks/test_join.py::test_join_big_small
+  # - tests/benchmarks/test_dataframe.py::test_shuffle
+  # - tests/benchmarks/test_h2o.py::test_q6
+  # - tests/benchmarks/test_h2o.py::test_q8
+  # - tests/benchmarks/test_h2o.py::test_q9
+  # - tests/benchmarks/test_join.py::test_join_big
+  # - tests/benchmarks/test_join.py::test_join_big_small
   - tests/benchmarks/test_join.py::test_set_index
-  - tests/benchmarks/test_join.py::test_set_index_on_uber_lyft
-  - tests/benchmarks/test_array.py::test_rechunk_in_memory
-  - tests/benchmarks/test_array.py::test_rechunk_striping
-  - tests/benchmarks/test_array.py::test_rechunk_swap_axes
-  - tests/benchmarks/test_array.py::test_rechunk_out_of_memory
+  # - tests/benchmarks/test_join.py::test_set_index_on_uber_lyft
+  # - tests/benchmarks/test_array.py::test_rechunk_in_memory
+  # - tests/benchmarks/test_array.py::test_rechunk_striping
+  # - tests/benchmarks/test_array.py::test_rechunk_swap_axes
+  # - tests/benchmarks/test_array.py::test_rechunk_out_of_memory
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
@@ -48,7 +48,7 @@ h2o_datasets:
 # never actually reached with real paying users.
 max_parallel:
   # Number of parallel A/B test jobs per branch.
-  ci_jobs: 8
+  ci_jobs: 15
   # Number of parallel test_*.py modules per A/B test job.
   # Each module typically spawns one Coiled cluster at a time.
   # Set to 1 to disable pytest-xdist.
