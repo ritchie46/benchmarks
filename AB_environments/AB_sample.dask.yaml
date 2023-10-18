@@ -11,3 +11,7 @@
 # distributed:
 #   scheduler:
 #     worker-saturation: 1.2
+
+distributed:
+    p2p:
+        disk: False
