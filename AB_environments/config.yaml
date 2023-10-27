@@ -13,8 +13,8 @@ test_null_hypothesis: true
 # Test directories, test files, or individual tests to run.
 targets:
   - tests/benchmarks/test_join.py::test_join_big
-  - tests/benchmarks/test_join.py::test_set_index_on_uber_lyft
-  - tests/tpch/test_dask.py::test_query_3
+  - tests/benchmarks/test_join.py::test_set_index
+  # - tests/tpch/test_dask.py::test_query_3
   # - tests/runtime
   # - tests/stability
   # - tests/benchmarks/test_futures.py
