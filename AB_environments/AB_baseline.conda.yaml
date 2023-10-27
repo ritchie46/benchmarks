@@ -59,4 +59,4 @@ dependencies:
     # Read README.md for troubleshooting.
     - git+https://github.com/dask/dask@009489f168e75f90ad123684a6d6b17cf3b57793
     - git+https://github.com/dask/distributed@b62b70051eee77684e7964f88a6553aeb453bc2b
-    - git+https://github.com/dask-contrib/dask-expr@748e8297e121aeda43c42d20504ee22f05c3c827
+    - git+https://github.com/dask-contrib/dask-expr@bf8dcbeae21cde2aaaf2db0528b40581db765adb
