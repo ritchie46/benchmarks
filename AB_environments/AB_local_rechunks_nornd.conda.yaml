@@ -47,5 +47,5 @@ dependencies:
 
   - pip:
     - git+https://github.com/dask/dask
-    - git+https://github.com/hendrikmakait/distributed@local-rechunks
+    - git+https://github.com/crusaderky/distributed@local-rechunks-nornd
     - git+https://github.com/dask-contrib/dask-expr
