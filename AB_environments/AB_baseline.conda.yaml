@@ -53,3 +53,7 @@ dependencies:
     # - git+https://github.com/dask/dask@191d39177009d2cce25b818878118e35329b6db3
     # - git+https://github.com/dask/distributed@0304fb6e665e36abf9e3086173cccd36e29ae84d
     # - git+https://github.com/dask-contrib/dask-expr@9f765764da3f518ddd4c896c98b8a40a979a5553
+
+    - git+https://github.com/dask/dask@efd83759334ba8e233a0cd7bb2c58e1edbd6ea83
+    - git+https://github.com/dask/distributed@546d953bf62a1a56ca59ae8c4786c0928eb5b1ac
+    - git+https://github.com/dask-contrib/dask-expr@91b26da3a7cc3ce0c8aadb92944c1988a5358f5f
